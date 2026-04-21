@@ -13,6 +13,7 @@ A modern, responsive website template for green energy companies built with Astr
 
 ## 🖼️ Screenshots
 
+
 ### Light Theme
 ![Light Theme Screenshot](./screenshots/Light.png)
 
@@ -91,7 +92,7 @@ This approach ensures:
    ```bash
    npm install
    ```
-   
+
    *Note: If using Volta, the correct Node.js version will be automatically selected.*
 
 3. **Start development server**
