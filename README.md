@@ -13,6 +13,9 @@ A modern, responsive website template for green energy companies built with Astr
 
 ## 🖼️ Screenshots
 
+
+
+
 ### Light Theme
 ![Light Theme Screenshot](./screenshots/Light.png)
 
