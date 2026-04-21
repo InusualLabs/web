@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   site: "https://inusuallabs.github.io",
+  base: '/web',
   output: "static",
   trailingSlash: "ignore",
 });
