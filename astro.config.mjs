@@ -4,8 +4,8 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: "https://inusuallabs.github.io",
-  base: '/web',
+  site: "https://www.inusual-labs.com",
+  base: '/',
   output: "static",
   trailingSlash: "ignore",
 });
