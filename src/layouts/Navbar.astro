@@ -1,0 +1,95 @@
+---
+import Container from "../components/shared/Container.astro";
+import Navitem from "../components/shared/Navitem.astro";
+import BtnLink from "../components/shared/BtnLink.astro";
+import BtnThemeSwitch from "../components/shared/BtnThemeSwitch.astro";
+
+const navItems = [
+  {
+    href: "/",
+    text: "Inicio",
+  },
+  {
+    href: "/#services",
+    text: "Servicios",
+  },
+  {
+    href: "/#projects",
+    text: "Proyectos",
+  },
+  {
+    href: "/Contacto",
+    text: "Contacto",
+  },
+];
+---
+
+<header class="absolute inset-x-0 top-0 z-50 py-6 px-6">
+  <nav class="w-full flex justify-between gap-6 relative">
+    <!-- logo -->
+    <div class="min-w-max inline-flex relative">
+      <a href="/" class="relative flex items-center gap-3">
+        <div class="relative h-10 overflow-hidden flex">
+          <img
+            src="/inusuallabslogo.svg"
+            alt="iNUSUAL LABS"
+            class="h-full w-auto object-contain"
+          />
+        </div>
+      </a>
+    </div>
+
+    <div
+      data-nav-overlay
+      aria-hidden="true"
+      class="fixed hidden inset-0 lg:!hidden bg-box-bg bg-opacity-50 backdrop-filter backdrop-blur-xl"
+    >
+    </div>
+    <div
+      data-navbar
+      class="flex h-0 overflow-hidden lg:!h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-y-6 gap-x-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-body lg:bg-transparent border-x border-x-box-border lg:border-x-0"
+    >
+      <ul
+        class="border-t border-box-border lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-8 text-sm text-heading-2 w-full lg:justify-end lg:items-center"
+      >
+        {
+          navItems.map((item) => {
+            return <Navitem {...item} />;
+          })
+        }
+      </ul>
+
+      <div
+        class="lg:min-w-max flex items-center sm:w-max w-full pb-6 lg:pb-0 border-b border-box-bg lg:border-0 px-6 lg:px-0"
+      >
+        <BtnLink
+          text="Contactar"
+          href="/Contacto"
+          className="flex justify-center w-full sm:w-max text-lg"
+          variant="cta"
+        />
+      </div>
+    </div>
+
+    <div class="min-w-max flex items-center gap-x-3">
+      <BtnThemeSwitch variant="primary" />
+
+      <button
+        data-toggle-nav
+        data-open-nav="false"
+        class="lg:hidden lg:invisible outline-none w-7 h-auto flex flex-col relative"
+      >
+        <span
+          class="w-6 h-0.5 rounded-full transition-all duration-300 ease-linear bg-black dark:bg-white"
+        ></span>
+        <span
+          class="w-6 origin-center mt-1 h-0.5 transition-all duration-300 ease-linear bg-black dark:bg-white"
+        ></span>
+        <span
+          class="w-6 mt-1 h-0.5 transition-all duration-300 ease-linear bg-black dark:bg-white"
+        ></span>
+        <span class="sr-only">togglenav</span>
+      </button>
+    </div>
+  </nav>
+</header>

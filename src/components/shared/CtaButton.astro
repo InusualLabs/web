@@ -1,0 +1,11 @@
+---
+import Button from "./Button.astro";
+---
+
+<Button color={"primary"} variant={"solid"} className={"min-w-max group"}>
+  <span
+    class="flex relative z-[5] font-medium text-lg font-semibold tracking-wide text-white group-hover:text-primary-500 duration-300 ease-linear"
+  >
+    <slot />
+  </span>
+</Button>

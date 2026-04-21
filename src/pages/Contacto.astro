@@ -1,0 +1,270 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/shared/Container.astro";
+---
+
+<Layout title="Contacto">
+  <main class="flex flex-col gap-y-20 md:gap-y-32 overflow-hidden pt-32">
+    
+    <!-- Encabezado -->
+    <section>
+      <Container>
+        <div class="text-center max-w-2xl mx-auto flex flex-col gap-4">
+          <span class="border border-primary text-primary rounded-full px-4 py-1 text-sm w-max mx-auto">
+            Contacto
+          </span>
+          <h1 class="text-4xl md:text-5xl font-bold text-accent">
+            Hablemos de tu <span class="text-primary">próximo proyecto</span>
+          </h1>
+          <p class="text-accent opacity-70 text-lg">
+            Cuéntanos qué necesitas y encontraremos la solución tecnológica más adecuada para ti.
+          </p>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Contenido principal -->
+    <section>
+      <Container>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          <!-- Información de contacto -->
+          <div class="flex flex-col gap-10">
+            <div>
+              <h2 class="text-2xl font-bold text-accent mb-6">Información de contacto</h2>
+              
+              <!-- Dirección -->
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-accent">Sede Central — A Coruña</p>
+                  <p class="text-accent opacity-70">C. Parroquia de Guísamo, Pol. Indust. Bergondo, 9 B</p>
+                  <p class="text-accent opacity-70">15166 Bergondo, A Coruña - Galicia</p>
+                </div>
+              </div>
+
+              <!-- Teléfono -->
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-accent">Teléfono</p>
+                  <a href="tel:+34981073079" class="text-accent opacity-70 hover:text-primary transition">+34 981 07 30 79</a>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4 mb-6">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-accent">Email</p>
+                  <a href="mailto:info@inusualcom.com" class="text-accent opacity-70 hover:text-primary transition">info@inusualcom.com</a>
+                </div>
+              </div>
+
+              <!-- Horario -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-accent">Horario</p>
+                  <p class="text-accent opacity-70">Lunes a Viernes: 9:00 - 18:00</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Redes sociales -->
+            <div>
+              <p class="font-semibold text-accent mb-4">Síguenos</p>
+              <div class="flex items-center gap-4">
+                <a href="https://www.linkedin.com/company/inusual2004/" target="_blank" class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/inusual.2004/" target="_blank" class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0H8zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <div class="bg-base dark:bg-base-dark rounded-2xl p-8 shadow-aesthetic border border-box-border">
+            <h2 class="text-2xl font-bold text-accent mb-6">Envíanos un mensaje</h2>
+            <form class="flex flex-col gap-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-medium text-accent" for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre"
+                    class="w-full px-4 py-3 rounded-xl border border-box-border bg-transparent text-accent placeholder:opacity-50 focus:outline-none focus:border-primary transition"/>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-medium text-accent" for="empresa">Empresa</label>
+                  <input type="text" id="empresa" name="empresa" placeholder="Tu empresa"
+                    class="w-full px-4 py-3 rounded-xl border border-box-border bg-transparent text-accent placeholder:opacity-50 focus:outline-none focus:border-primary transition"/>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-accent" for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com"
+                  class="w-full px-4 py-3 rounded-xl border border-box-border bg-transparent text-accent placeholder:opacity-50 focus:outline-none focus:border-primary transition"/>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-accent" for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+34 000 000 000"
+                  class="w-full px-4 py-3 rounded-xl border border-box-border bg-transparent text-accent placeholder:opacity-50 focus:outline-none focus:border-primary transition"/>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-accent" for="asunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?"
+                  class="w-full px-4 py-3 rounded-xl border border-box-border bg-transparent text-accent placeholder:opacity-50 focus:outline-none focus:border-primary transition"/>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-medium text-accent" for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos tu proyecto..."
+                  class="w-full px-4 py-3 rounded-xl border border-box-border bg-transparent text-accent placeholder:opacity-50 focus:outline-none focus:border-primary transition resize-none"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full rounded-full bg-primary border-2 border-primary text-white font-semibold py-3 px-6 hover:bg-white hover:text-primary transition duration-300">
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </Container>
+    </section>
+
+    <!-- Oficinas -->
+    <section>
+      <Container>
+        <h2 class="text-2xl font-bold text-accent mb-8">Nuestras oficinas</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div onclick="seleccionarOficina('acoruna')" id="card-acoruna"
+            class="oficina-card border-2 border-box-border rounded-2xl p-6 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-aesthetic group active-card">
+            <span class="text-primary font-semibold text-sm">🇪🇸 España — Sede Central</span>
+            <p class="font-bold text-accent text-lg">A Coruña</p>
+            <p class="text-accent opacity-70 text-sm">INUSUAL COMUNICACIÓN INNOVADORA</p>
+            <p class="text-accent opacity-70 text-sm">C. Parroquia de Guísamo, Pol. Indust. Bergondo, 9 B<br/>15166 Bergondo, A Coruña</p>
+            <p class="text-accent opacity-70 text-sm">T: +34 981 07 30 79</p>
+            <span class="text-primary text-sm font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ver en el mapa →</span>
+          </div>
+
+          <div onclick="seleccionarOficina('madrid')" id="card-madrid"
+            class="oficina-card border-2 border-box-border rounded-2xl p-6 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-aesthetic group">
+            <span class="text-primary font-semibold text-sm">🇪🇸 España — Oficina Comercial</span>
+            <p class="font-bold text-accent text-lg">Madrid</p>
+            <p class="text-accent opacity-70 text-sm">SoWork Inusual</p>
+            <p class="text-accent opacity-70 text-sm">C. Madrid-Toledo (A-42), Km 8<br/>28916 Leganés, Madrid</p>
+            <span class="text-primary text-sm font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ver en el mapa →</span>
+          </div>
+
+          <div onclick="seleccionarOficina('china')" id="card-china"
+            class="oficina-card border-2 border-box-border rounded-2xl p-6 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-aesthetic group">
+            <span class="text-primary font-semibold text-sm">🇨🇳 China — Filial</span>
+            <p class="font-bold text-accent text-lg">Shenzhen</p>
+            <p class="text-accent opacity-70 text-sm">ICI TECHNOLOGY SHENZHEN LTD.</p>
+            <p class="text-accent opacity-70 text-sm">407, Block A3, Mingxi Originality Park<br/>No.4, Huaide South Road, Fuyong Street<br/>Bao'an District, Shenzhen</p>
+            <span class="text-primary text-sm font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ver en el mapa →</span>
+          </div>
+
+          <div onclick="seleccionarOficina('mexico')" id="card-mexico"
+            class="oficina-card border-2 border-box-border rounded-2xl p-6 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-aesthetic group">
+            <span class="text-primary font-semibold text-sm">🇲🇽 México — Filial</span>
+            <p class="font-bold text-accent text-lg">Puebla</p>
+            <p class="text-accent opacity-70 text-sm">INUSUAL INGENIERIA Y DESARROLLOS SA DE CV</p>
+            <p class="text-accent opacity-70 text-sm">Calle Río Lerma, 10, Colonia Sanctorum<br/>72730 Cuautlancingo, Puebla</p>
+            <span class="text-primary text-sm font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ver en el mapa →</span>
+          </div>
+
+          <div onclick="seleccionarOficina('usa')" id="card-usa"
+            class="oficina-card border-2 border-box-border rounded-2xl p-6 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-aesthetic group">
+            <span class="text-primary font-semibold text-sm">🇺🇸 USA — Oficina Comercial</span>
+            <p class="font-bold text-accent text-lg">Austin</p>
+            <p class="text-accent opacity-70 text-sm">600 Congress Ave Fl 14<br/>Austin TX 78701</p>
+            <span class="text-primary text-sm font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Ver en el mapa →</span>
+          </div>
+
+        </div>
+      </Container>
+    </section>
+
+    <!-- Mapa -->
+    <section class="pb-20">
+      <Container>
+        <h2 class="text-2xl font-bold text-accent mb-4">Dónde estamos</h2>
+        <p class="text-accent opacity-60 text-sm mb-8">Haz clic en una oficina para verla en el mapa.</p>
+        <div class="rounded-2xl overflow-hidden border border-box-border h-96 transition-all duration-500">
+          <iframe
+            id="mapa-principal"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.05016058506!2d-8.276281323383198!3d43.31320937435344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7cd4b8eeb875%3A0xc4b9c0ee7d23a45d!2sInusual!5e0!3m2!1ses!2ses!4v1776758226932!5m2!1ses!2ses"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </Container>
+    </section>
+
+  </main>
+</Layout>
+
+<script>
+  const mapas: Record<string, string> = {
+    acoruna: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.05016058506!2d-8.276281323383198!3d43.31320937435344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7cd4b8eeb875%3A0xc4b9c0ee7d23a45d!2sInusual!5e0!3m2!1ses!2ses!4v1776758226932!5m2!1ses!2ses",
+    madrid: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.7046262485837!2d-3.7266912234955463!3d40.34889795976438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42214055fcde39%3A0xdc5e5dacb7a15c60!2sSoWORK%20Coworking%20en%20Legan%C3%A9s!5e0!3m2!1ses!2ses!4v1776758754041!5m2!1ses!2ses",
+    china: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.7249789810844!2d114.0821918!3d22.5144995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f79a419643f9%3A0x5b52b892ab959e3a!2z5riv5rex5Ym15paw5Y-K56eR5oqA5ZySIEhvbmcgS29uZy1TaGVuemhlbiBJbm5vdmF0aW9uIGFuZCBUZWNobm9sb2d5IFBhcmsgTGltaXRlZCAoSFNJVFAp!5e0!3m2!1sen!2ses!4v1776758475215!5m2!1sen!2ses",
+    mexico: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.7287404241565!2d-98.26036152406309!3d19.119552450602374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc436469f4983%3A0x390ff355d1d6b477!2sR%C3%ADo%20Lerma%2010%2C%20Sanctorum%2C%2072730%20Sanctorum%2C%20Pue.%2C%20M%C3%A9xico!5e0!3m2!1ses!2ses!4v1776758542546!5m2!1ses!2ses",
+    usa: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1024.4774568076787!2d-97.74345598463691!3d30.26792652187197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b509c0706f9d%3A0xb5c171e36a8626a6!2sWeWork%20Office%20Space%20%26%20Coworking!5e0!3m2!1ses!2ses!4v1776758627051!5m2!1ses!2ses",
+  };
+
+  function seleccionarOficina(lugar: string) {
+    // Cambiar mapa
+    const iframe = document.getElementById("mapa-principal") as HTMLIFrameElement;
+    if (iframe) iframe.src = mapas[lugar];
+
+    // Quitar estilo activo de todas las tarjetas
+    document.querySelectorAll(".oficina-card").forEach((card) => {
+      card.classList.remove("border-primary", "shadow-aesthetic", "bg-primary/5");
+      card.classList.add("border-box-border");
+    });
+
+    // Marcar tarjeta activa
+    const cardActiva = document.getElementById(`card-${lugar}`);
+    if (cardActiva) {
+      cardActiva.classList.add("border-primary", "shadow-aesthetic", "bg-primary/5");
+      cardActiva.classList.remove("border-box-border");
+    }
+
+    // Scroll suave al mapa
+    document.getElementById("mapa-principal")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  (window as any).seleccionarOficina = seleccionarOficina;
+
+  // Año en footer
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear().toString();
+</script>
