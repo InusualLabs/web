@@ -1,0 +1,139 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  ctaPrimary: { label: string; href: string };
+  ctaSecondary: { label: string; href: string };
+}
+const { headline, subheadline, ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section class="cta-final">
+  <div class="container cta-final__inner reveal">
+    <div class="cta-final__content">
+      <h2 class="cta-final__headline">{headline}</h2>
+      <p class="cta-final__sub">{subheadline}</p>
+      <div class="cta-final__actions">
+        <a href={ctaPrimary.href} class="cta-final__btn cta-final__btn--primary">
+          {ctaPrimary.label}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href={ctaSecondary.href} class="cta-final__btn cta-final__btn--secondary">
+          {ctaSecondary.label}
+        </a>
+      </div>
+    </div>
+
+    <!-- Decorative glow -->
+    <div class="cta-final__glow" aria-hidden="true"></div>
+  </div>
+</section>
+
+<style>
+.cta-final {
+  padding-block: clamp(var(--space-20), 10vw, var(--space-32));
+  background: var(--color-bg-dark);
+  overflow: hidden;
+}
+
+.cta-final__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cta-final__content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+.cta-final__headline {
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-5xl));
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+  font-style: italic;
+}
+
+.cta-final__sub {
+  font-size: clamp(var(--text-base), 2vw, var(--text-md));
+  color: rgba(255,255,255,0.5);
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-10);
+}
+
+.cta-final__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.cta-final__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.cta-final__btn svg {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cta-final__btn:hover svg {
+  transform: translateX(3px);
+}
+
+.cta-final__btn--primary {
+  background: var(--color-accent);
+  color: var(--color-text);
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+}
+
+.cta-final__btn--primary:hover {
+  box-shadow: 0 0 40px rgba(200,255,0,0.3);
+  transform: translateY(-2px);
+}
+
+.cta-final__btn--secondary {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-base);
+  border: 1.5px solid rgba(255,255,255,0.15);
+}
+
+.cta-final__btn--secondary:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* Decorative glow */
+.cta-final__glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,255,0,0.08) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .cta-final__actions { flex-direction: column; width: 100%; }
+  .cta-final__btn { justify-content: center; }
+}
+</style>

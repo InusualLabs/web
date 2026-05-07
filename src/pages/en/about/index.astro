@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/layout/Navbar.astro';
+import Footer from '../../../components/layout/Footer.astro';
+import AnnouncementBar from '../../../components/layout/AnnouncementBar.astro';
+
+const locations = [
+  {
+    country: 'Spain',
+    offices: [
+      { name: 'A Coruña', type: 'HQ' },
+      { name: 'Madrid', type: 'Commercial Office' },
+    ],
+  },
+  {
+    country: 'China',
+    offices: [
+      { name: 'ICI Technology Shenzhen Ltd', type: 'Subsidiary' },
+    ],
+  },
+  {
+    country: 'México',
+    offices: [
+      { name: 'Inusual Ingeniería y Desarrollos SA de CV', type: 'Subsidiary' },
+    ],
+  },
+  {
+    country: 'USA',
+    offices: [
+      { name: 'Inusual USA', type: 'Commercial Office' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="About iNUSUAL — Innovative Engineering"
+  description="Learn about iNUSUAL, an IoT engineering and R&D company with presence in Spain, Mexico, USA and China."
+  lang="en"
+>
+  <AnnouncementBar />
+  <Navbar lang="en" currentPath="/en/about" />
+
+  <main>
+
+    <section class="intro">
+      <div class="intro__bg"></div>
+      <div class="intro__overlay"></div>
+      <div class="container intro__inner">
+        <div class="intro__content reveal">
+          <span class="eyebrow eyebrow--light">About Inusual.labs</span>
+          <h1 class="intro__title">
+            Engineering that connects the real world
+          </h1>
+          <p class="intro__text">
+            IoT systems, R&D and engineering solutions for asset control and management.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="container about__inner">
+
+        <div class="about__logo reveal">
+          <img src="/logo.svg" alt="Inusual.labs" class="about__logo-img" />
+        </div>
+
+        <div class="about__content reveal reveal-delay-2">
+          <p class="about__text">
+            Inusual.labs is the engineering and R&D division of iNUSUAL. We develop custom technological solutions for companies that need to control, monitor and manage their assets in real time and from anywhere.
+          </p>
+          <p class="about__text">
+            We work with IoT technology, embedded systems and telemetry platforms to create products that connect the physical world with the digital — from agricultural sensors to industrial devices and retail solutions.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="worldwide">
+      <div class="container">
+
+        <div class="worldwide__header reveal">
+          <h2 class="worldwide__title">Where are we?</h2>
+          <div class="worldwide__title-line"></div>
+        </div>
+
+        <div class="worldwide__list">
+          {locations.map((loc) => (
+            <div class="ww-row reveal">
+              <div class="ww-row__inner">
+                <h3 class="ww-row__country">{loc.country}</h3>
+                <div class="ww-row__offices">
+                  {loc.offices.map((office) => (
+                    <div class="ww-row__office">
+                      <span class="ww-row__office-name">{office.name}</span>
+                      <span class="ww-row__office-type">({office.type})</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div class="ww-row__line"></div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+.eyebrow {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-5);
+}
+
+.eyebrow--light { color: rgba(255,255,255,0.5); }
+
+.intro {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/fondonosotros.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.intro__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.3) 60%,
+    rgba(0,0,0,0.1) 100%
+  );
+  z-index: 1;
+}
+
+.intro__inner {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(5rem, 10vw, 9rem);
+  width: 100%;
+}
+
+.intro__content { max-width: 800px; }
+
+.intro__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: var(--space-6);
+}
+
+.intro__text {
+  font-size: var(--text-base);
+  color: rgba(255,255,255,0.7);
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-4);
+  max-width: 560px;
+}
+
+.about {
+  background: #fff;
+  padding-block: clamp(5rem, 10vw, 9rem);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+}
+
+.about__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__logo-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+.about__text {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-4);
+}
+
+.worldwide {
+  background: #fff;
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+.worldwide__header { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.worldwide__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.worldwide__title-line {
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+}
+
+.worldwide__list { display: flex; flex-direction: column; }
+
+.ww-row { cursor: default; }
+
+.ww-row__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.ww-row__country {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  min-width: 200px;
+}
+
+.ww-row__offices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: right;
+}
+
+.ww-row__office {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.ww-row__office-name {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-sm), 1.5vw, var(--text-base));
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.ww-row__office-type {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-style: normal;
+}
+
+.ww-row__line {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}
+
+@media (max-width: 900px) {
+  .about__inner { grid-template-columns: 1fr; }
+  .about__logo { justify-content: flex-start; }
+  .ww-row__country { font-size: clamp(1.5rem, 5vw, 2.5rem); min-width: 120px; }
+}
+
+@media (max-width: 768px) {
+  .ww-row__inner { flex-direction: column; align-items: flex-start; }
+  .ww-row__offices { text-align: left; }
+  .ww-row__office { justify-content: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .about__logo-img { max-width: 200px; }
+}
+</style>

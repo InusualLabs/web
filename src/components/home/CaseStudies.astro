@@ -1,0 +1,248 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+const { lang = 'es' } = Astro.props;
+const isEs = lang === 'es';
+
+const cases = [
+  { href: isEs ? '/proyectos' : '/en/projects', color: '#1a1a2e', image: '/proyectos/carrosdecargaaulas.jpg' },
+  { href: isEs ? '/proyectos' : '/en/projects', color: '#0d2137', image: '/proyectos/bennerskioskos.jpg' },
+  { href: isEs ? '/proyectos' : '/en/projects', color: '#0a3d2e', image: '/proyectos/telemedidaagricultura.jpg' },
+  { href: isEs ? '/proyectos' : '/en/projects', color: '#2d1b00', image: '/proyectos/placasmonitorizacion.jpg' },
+  { href: isEs ? '/proyectos' : '/en/projects', color: '#1a0a2e', image: '/proyectos/smartdigits.jpg' },
+  { href: isEs ? '/proyectos' : '/en/projects', color: '#0a1a2e', image: '/proyectos/banderoladigitaldisashop.jpg' },
+];
+
+const allCases = [...cases, ...cases, ...cases];
+---
+
+<section class="case-studies">
+  <div class="container">
+    <div class="case-studies__header reveal">
+      <h2 class="case-studies__title">
+        {isEs ? 'Grandes compañías cuentan con nosotros' : 'Leading companies trust us'}
+      </h2>
+      <div class="case-studies__nav-wrapper">
+        <span class="case-studies__scroll-label">
+          {isEs ? 'Scroll para ver más' : 'Scroll to see more'}
+        </span>
+        <div class="case-studies__nav">
+          <button class="case-studies__arrow" id="cs-prev" aria-label="Previous">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="case-studies__arrow" id="cs-next" aria-label="Next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-studies__outer" id="cs-outer">
+    <div class="case-studies__track" id="cs-track">
+      {allCases.map((c, i) => (
+        <div class="case-card" data-index={i}>
+          <div
+            class="case-card__image"
+            style={`--c: ${c.color}; background-image: url('${c.image}')`}
+            onclick={`window.location='${c.href}'`}
+          >
+            <div class="case-card__overlay"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.case-studies {
+  background: #fff;
+  padding-block: clamp(4rem, 8vw, 7rem);
+  overflow: hidden;
+}
+
+.case-studies__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.case-studies__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--color-text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  max-width: none;
+}
+
+.case-studies__nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.case-studies__scroll-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.case-studies__nav {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.case-studies__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.case-studies__arrow:hover {
+  border-color: #029788;
+  color: #029788;
+}
+
+.case-studies__outer {
+  width: 100%;
+  overflow: hidden;
+  padding-left: clamp(1.5rem, 5vw, 4rem);
+  cursor: grab;
+}
+
+.case-studies__outer:active {
+  cursor: grabbing;
+}
+
+.case-studies__track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+
+.case-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: calc((100vw - clamp(1.5rem, 5vw, 4rem)) / 2.5);
+  min-width: 380px;
+  max-width: 600px;
+}
+
+.case-card__image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--c);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.case-card__image:hover {
+  transform: scale(1.02);
+}
+
+.case-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background var(--duration-normal) var(--ease-out);
+}
+
+.case-card__image:hover .case-card__overlay {
+  background: rgba(0,0,0,0.15);
+}
+
+@media (max-width: 900px) {
+  .case-card {
+    width: calc((100vw - clamp(1.5rem, 5vw, 4rem)) / 1.5);
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-card {
+    width: calc(100vw - clamp(1.5rem, 5vw, 4rem) * 2);
+    min-width: 240px;
+  }
+}
+</style>
+
+<script>
+  const outer = document.getElementById('cs-outer') as HTMLElement;
+  const track = document.getElementById('cs-track') as HTMLElement;
+
+  if (outer && track) {
+    const GAP = 24;
+    const TOTAL_CARDS = 6;
+    const cardEl = track.querySelector('.case-card') as HTMLElement;
+    const CARD_WIDTH = cardEl ? cardEl.getBoundingClientRect().width : 500;
+    const SET_WIDTH = (CARD_WIDTH + GAP) * TOTAL_CARDS;
+
+    let currentX = SET_WIDTH;
+    let autoTimer: ReturnType<typeof setInterval>;
+
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${currentX}px)`;
+
+    function moveTo(x: number, smooth: boolean = true) {
+      track.style.transition = smooth
+        ? 'transform 0.9s cubic-bezier(0.22, 1, 0.36, 1)'
+        : 'none';
+      track.style.transform = `translateX(-${x}px)`;
+      currentX = x;
+
+      if (smooth) {
+        track.addEventListener('transitionend', function onEnd() {
+          track.removeEventListener('transitionend', onEnd);
+          if (currentX >= SET_WIDTH * 2) {
+            currentX = SET_WIDTH;
+            moveTo(currentX, false);
+          }
+          if (currentX <= 0) {
+            currentX = SET_WIDTH;
+            moveTo(currentX, false);
+          }
+        }, { once: true });
+      }
+    }
+
+    function next() { moveTo(currentX + (CARD_WIDTH + GAP)); }
+    function prev() { moveTo(currentX - (CARD_WIDTH + GAP)); }
+    function startAuto() { autoTimer = setInterval(next, 2500); }
+    function stopAuto() { clearInterval(autoTimer); }
+
+    document.getElementById('cs-next')?.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+    document.getElementById('cs-prev')?.addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+
+    outer.addEventListener('mouseenter', stopAuto);
+    outer.addEventListener('mouseleave', startAuto);
+
+    startAuto();
+  }
+</script>

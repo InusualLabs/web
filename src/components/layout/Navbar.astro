@@ -1,0 +1,268 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+  currentPath?: string;
+}
+const { lang = 'es', currentPath = '/' } = Astro.props;
+
+const isEs = lang === 'es';
+
+const navLinks = isEs
+  ? [
+      { label: 'Proyectos', href: '/proyectos' },
+      { label: 'Sobre nosotros', href: '/sobre-nosotros' },
+      { label: 'Contacto', href: '/contacto' },
+    ]
+  : [
+      { label: 'Projects', href: '/en/projects' },
+      { label: 'About us', href: '/en/about' },
+      { label: 'Contact', href: '/en/contact' },
+    ];
+
+const ctaPrimary = isEs
+  ? { label: 'Contactar', href: '/contacto' }
+  : { label: 'Contact', href: '/contacto' };
+---
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+
+    <a href={isEs ? '/' : '/en'} class="navbar__logo" aria-label="iNUSUAL">
+      <img src="/logo.svg" alt="iNUSUAL" class="navbar__logo-img" />
+    </a>
+
+    <nav class="navbar__nav" role="navigation">
+      {navLinks.map((link) => (
+        <a href={link.href} class={currentPath === link.href ? 'navbar__link is-active' : 'navbar__link'}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="navbar__actions">
+      <div class="lang-switcher">
+        <a href="/" class={`lang-switcher__btn${isEs ? ' is-active' : ''}`}>ES</a>
+        <span class="lang-switcher__divider">|</span>
+        <a href="/en" class={`lang-switcher__btn${!isEs ? ' is-active' : ''}`}>EN</a>
+      </div>
+      <a href={ctaPrimary.href} class="btn btn--primary btn--sm">
+        {ctaPrimary.label}
+      </a>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="navbar__mobile" id="mobile-menu" aria-hidden="true">
+    <nav class="navbar__mobile-nav">
+      {navLinks.map((link) => (
+        <a href={link.href} class="navbar__mobile-link">{link.label}</a>
+      ))}
+    </nav>
+    <a href={ctaPrimary.href} class="btn btn--primary" style="margin-top: 1.5rem;">
+      {ctaPrimary.label}
+    </a>
+  </div>
+</header>
+
+<style>
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.navbar.is-scrolled {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  height: 72px;
+}
+
+.navbar__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.navbar__link {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.navbar__link:hover,
+.navbar__link.is-active {
+  color: #029788;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.lang-switcher__btn {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: var(--space-1) var(--space-2);
+  transition: color var(--duration-fast);
+  text-decoration: none;
+}
+
+.lang-switcher__btn:hover,
+.lang-switcher__btn.is-active {
+  color: #029788;
+}
+
+.lang-switcher__divider {
+  color: var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 500;
+  border-radius: 2px;
+  transition: background var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn--primary {
+  background: linear-gradient(135deg, #029788, #00D4C8, #029788);
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+  color: #fff;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+}
+
+.btn--primary:hover {
+  background: linear-gradient(135deg, #017a6e 0%, #00B8B0 100%);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--sm {
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.navbar__hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar__hamburger.is-open span:nth-child(2) { opacity: 0; }
+.navbar__hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.navbar__mobile {
+  display: none;
+  flex-direction: column;
+  padding: var(--space-6) var(--container-px) var(--space-8);
+  border-top: 1px solid var(--color-border);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-slow) var(--ease-out);
+}
+
+.navbar__mobile.is-open {
+  max-height: 600px;
+}
+
+.navbar__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navbar__mobile-link {
+  font-size: var(--text-md);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--duration-fast);
+  text-decoration: none;
+}
+
+.navbar__mobile-link:hover { color: #029788; }
+
+@media (max-width: 1024px) {
+  .navbar__nav { display: none; }
+}
+
+@media (max-width: 768px) {
+  .navbar__hamburger { display: flex; }
+  .navbar__mobile { display: flex; }
+  .lang-switcher { display: none; }
+  .btn--primary { display: none; }
+  .navbar__inner { justify-content: space-between; gap: var(--space-4); }
+}
+</style>

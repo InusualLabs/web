@@ -1,0 +1,253 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+
+const testimonials = [
+  {
+    quote: 'iNUSUAL transformó por completo la experiencia visual de nuestras tiendas. El nivel de detalle técnico y el acompañamiento durante todo el proyecto fue excepcional.',
+    name: 'Responsable de Visual Merchandising',
+    role: 'Retail — España',
+    initials: 'RM',
+  },
+  {
+    quote: 'Llevamos 3 años trabajando con iNUSUAL en nuestros hoteles. Su capacidad de adaptación a cada espacio y la calidad de las instalaciones LED es simplemente de otro nivel.',
+    name: 'Director de Operaciones',
+    role: 'Hospitality — España & México',
+    initials: 'DO',
+  },
+  {
+    quote: 'Lo que más valoramos es que son un equipo técnico y creativo al mismo tiempo. No solo instalan, proponen soluciones que realmente funcionan para el negocio.',
+    name: 'Head of Brand Experience',
+    role: 'Corporativo — España',
+    initials: 'HB',
+  },
+];
+---
+
+<section class="testimonials section">
+  <div class="container">
+    <div class="testimonials__header reveal">
+      <h2 class="testimonials__title">{title}</h2>
+    </div>
+
+    <div class="testimonials__track-wrapper">
+      <div class="testimonials__track" id="testimonials-track">
+        {testimonials.map((t, i) => (
+          <div class:list={['testimonials__card', { 'is-active': i === 0 }]} data-index={i}>
+            <div class="testimonials__quote-icon">"</div>
+            <blockquote class="testimonials__quote">{t.quote}</blockquote>
+            <div class="testimonials__author">
+              <div class="testimonials__avatar">{t.initials}</div>
+              <div class="testimonials__meta">
+                <strong class="testimonials__name">{t.name}</strong>
+                <span class="testimonials__role">{t.role}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="testimonials__controls">
+        <button class="testimonials__arrow" id="prev-testimonial" aria-label="Anterior">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="testimonials__dots" id="testimonials-dots">
+          {testimonials.map((_, i) => (
+            <button
+              class:list={['testimonials__dot', { 'is-active': i === 0 }]}
+              data-dot={i}
+              aria-label={`Testimonio ${i + 1}`}
+            ></button>
+          ))}
+        </div>
+
+        <button class="testimonials__arrow" id="next-testimonial" aria-label="Siguiente">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonials {
+  background: var(--color-bg-soft);
+  overflow: hidden;
+}
+
+.testimonials__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.testimonials__title {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl));
+  letter-spacing: -0.02em;
+}
+
+.testimonials__track-wrapper {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.testimonials__track {
+  position: relative;
+  min-height: 280px;
+}
+
+.testimonials__card {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+  pointer-events: none;
+}
+
+.testimonials__card.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+.testimonials__quote-icon {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.5;
+  color: var(--color-accent);
+  margin-bottom: var(--space-6);
+  display: block;
+}
+
+.testimonials__quote {
+  font-size: clamp(var(--text-base), 2vw, var(--text-md));
+  color: var(--color-text);
+  line-height: var(--leading-loose);
+  margin-bottom: var(--space-8);
+  font-style: normal;
+}
+
+.testimonials__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.testimonials__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg-dark);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+}
+
+.testimonials__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonials__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.testimonials__role {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Controls */
+.testimonials__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.testimonials__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.testimonials__arrow:hover {
+  border-color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonials__dots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.testimonials__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  border: none;
+}
+
+.testimonials__dot.is-active {
+  background: var(--color-text);
+  width: 24px;
+  border-radius: var(--radius-full);
+}
+</style>
+
+<script>
+  const track = document.getElementById('testimonials-track');
+  const cards = track?.querySelectorAll('[data-index]') ?? [];
+  const dots = document.querySelectorAll('[data-dot]');
+  let current = 0;
+
+  function goTo(index: number) {
+    cards[current]?.classList.remove('is-active');
+    dots[current]?.classList.remove('is-active');
+    current = (index + cards.length) % cards.length;
+    cards[current]?.classList.add('is-active');
+    dots[current]?.classList.add('is-active');
+  }
+
+  document.getElementById('prev-testimonial')?.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next-testimonial')?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => goTo(Number((dot as HTMLElement).dataset.dot)));
+  });
+
+  // Auto-advance
+  setInterval(() => goTo(current + 1), 6000);
+</script>

@@ -1,0 +1,116 @@
+---
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+
+const clients = [
+  'Inditex', 'Adidas', 'Telefónica', 'NH Hotels', 'Mango',
+  'Zara', 'El Corte Inglés', 'Meliá', 'Leroy Merlin', 'MediaMarkt',
+];
+---
+
+<section class="logo-slider">
+  <div class="container logo-slider__header reveal">
+    <span class="logo-slider__label">{label}</span>
+  </div>
+
+  <div class="logo-slider__track-wrapper">
+    <div class="logo-slider__track">
+      {[...clients, ...clients].map((name) => (
+        <div class="logo-slider__item">
+          <span class="logo-slider__name">{name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.logo-slider {
+  background: #fff;
+  padding-block: var(--space-10);
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logo-slider__header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.logo-slider__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.logo-slider__track-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo-slider__track-wrapper::before,
+.logo-slider__track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-slider__track-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.logo-slider__track-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.logo-slider__track {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-slider__item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+}
+
+.logo-slider__name {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: opacity var(--duration-fast);
+}
+
+.logo-slider__item:hover .logo-slider__name {
+  opacity: 1;
+  color: #029788;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-slider__track { animation: none; }
+}
+</style>

@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import Footer from '../../components/layout/Footer.astro';
+import AnnouncementBar from '../../components/layout/AnnouncementBar.astro';
+
+const recursos = [
+  { type: 'Guía', title: 'Cómo maximizar el impacto visual en retail con LED', date: 'Abril 2025', href: '#' },
+  { type: 'Blog', title: 'e-Paper vs LCD: cuándo usar cada tecnología en señalética', date: 'Marzo 2025', href: '#' },
+  { type: 'Caso de éxito', title: 'Cómo Inditex transformó 40 tiendas con iNUSUAL', date: 'Febrero 2025', href: '#' },
+  { type: 'Guía', title: 'Digital Signage para hoteles: guía completa 2025', date: 'Enero 2025', href: '#' },
+  { type: 'Blog', title: 'Pixel pitch: la guía definitiva para elegir tu pantalla LED', date: 'Diciembre 2024', href: '#' },
+  { type: 'Caso de éxito', title: 'Sistema AV corporativo para Telefónica: resultados', date: 'Noviembre 2024', href: '#' },
+];
+
+const typeColors: Record<string, string> = {
+  'Guía': '#C8FF00',
+  'Blog': '#E5E5E5',
+  'Caso de éxito': '#FF4D00',
+};
+---
+
+<BaseLayout
+  title="Recursos — iNUSUAL"
+  description="Guías, artículos y casos de éxito sobre integración audiovisual, digital signage y tecnología LED."
+>
+  <AnnouncementBar
+    text="Nueva guía: Cómo maximizar el impacto visual en retail con LED"
+    ctaLabel="Descargar guía"
+    ctaHref="/recursos"
+  />
+  <Navbar lang="es" currentPath="/recursos" />
+
+  <main>
+    <section class="page-hero section">
+      <div class="container">
+        <div class="reveal">
+          <span class="page-eyebrow">Recursos</span>
+          <h1 class="recursos-title">Conocimiento en <em>abierto</em></h1>
+          <p class="recursos-sub">Guías técnicas, artículos del sector y casos de éxito de nuestros proyectos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="recursos-grid section">
+      <div class="container">
+        <div class="recursos-list">
+          {recursos.map((r, i) => (
+            <a
+              href={r.href}
+              class:list={['recurso-item', 'reveal', `reveal-delay-${(i % 3) + 1}`]}
+            >
+              <div class="recurso-item__inner">
+                <span
+                  class="recurso-item__type"
+                  style={`background: ${typeColors[r.type] || '#E5E5E5'}; color: ${r.type === 'Guía' ? '#0A0A0A' : r.type === 'Caso de éxito' ? '#fff' : '#0A0A0A'}`}
+                >
+                  {r.type}
+                </span>
+                <h3 class="recurso-item__title">{r.title}</h3>
+                <span class="recurso-item__date">{r.date}</span>
+              </div>
+              <span class="recurso-item__arrow">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang="es" />
+</BaseLayout>
+
+<style>
+.page-hero { background: var(--color-bg-soft); }
+
+.page-eyebrow {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.recursos-title {
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.recursos-title em { font-style: italic; }
+
+.recursos-sub {
+  font-size: clamp(var(--text-base), 2vw, var(--text-md));
+  color: var(--color-text-muted);
+  max-width: 500px;
+  line-height: var(--leading-loose);
+}
+
+.recursos-grid { background: var(--color-bg); }
+
+.recursos-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
+}
+
+.recurso-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: background var(--duration-fast);
+}
+
+.recurso-item:hover { background: var(--color-bg-soft); }
+
+.recurso-item__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.recurso-item__type {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.recurso-item__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+  font-style: italic;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.recurso-item__date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.recurso-item__arrow {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  transition: transform var(--duration-fast) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.recurso-item:hover .recurso-item__arrow {
+  transform: translateX(4px);
+  color: var(--color-text);
+}
+
+@media (max-width: 600px) {
+  .recurso-item { align-items: flex-start; }
+  .recurso-item__inner { gap: var(--space-3); }
+  .recurso-item__date { display: none; }
+}
+</style>

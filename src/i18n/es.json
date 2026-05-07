@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "projects": "Proyectos",
+    "about": "Sobre Inusual.labs",
+    "contact": "Contacto",
+    "cta_primary": "Solicitar propuesta",
+    "cta_secondary": "Ver proyectos"
+  },
+  "announcement": {
+    "text": "Nueva guía: Cómo maximizar el impacto visual en retail con LED y señalización digital",
+    "cta": "Descargar guía"
+  },
+  "hero": {
+    "headline_1": "Gestiona lo que importa, de forma inteligente",
+    "headline_2": "",
+    "headline_3": "",
+    "subheadline": "Soluciones tecnológicas que mantienen tus activos bajo control, en tiempo real y desde cualquier lugar.",
+    "cta_primary": "Solicitar propuesta",
+    "cta_secondary": "Ver proyectos",
+    "clients_label": "+200 proyectos completados"
+  },
+  "clients": {
+    "label": "Confían en Inusual.labs"
+  },
+  "why": {
+    "title": "¿Por qué Inusual.labs?",
+    "items": [
+      {
+        "title": "Integración completa",
+        "body": "Desde el diseño hasta la instalación y el mantenimiento. Un único interlocutor para todo el proyecto."
+      },
+      {
+        "title": "Tecnología propia",
+        "body": "Hardware y software desarrollado internamente. Pantallas LED, e-Paper y sistemas de gestión de contenidos a medida."
+      },
+      {
+        "title": "Presencia internacional",
+        "body": "Proyectos ejecutados en España, México, USA y China. Equipos locales en cada mercado."
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "value": "+200", "label": "Proyectos completados" },
+      { "value": "+50", "label": "Clientes activos" },
+      { "value": "4", "label": "Países con presencia" },
+      { "value": "+15", "label": "Años de experiencia" }
+    ]
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes"
+  },
+  "cta_final": {
+    "headline": "¿Listo para transformar tu espacio?",
+    "subheadline": "Cuéntanos tu proyecto y te preparamos una propuesta personalizada.",
+    "cta_primary": "Solicitar propuesta",
+    "cta_secondary": "Ver casos de éxito"
+  },
+  "footer": {
+    "tagline": "Comunicación innovadora",
+    "solutions": "Soluciones",
+    "company": "Empresa",
+    "resources": "Recursos",
+    "legal": "Legal",
+    "copyright": "© 2025 Inusual.labs — Inusual Comunicación Innovadora S.L. Todos los derechos reservados.",
+    "address": "A Coruña, Galicia — España"
+  }
+}

@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # local docs
 DEPLOYMENT.md
+
+.claude/
+.history/

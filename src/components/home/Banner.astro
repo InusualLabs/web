@@ -1,0 +1,85 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+const { lang = 'es' } = Astro.props;
+const isEs = lang === 'es';
+---
+
+<section class="banner">
+  <div class="banner__bg"></div>
+  <div class="banner__overlay"></div>
+
+  <div class="banner__inner">
+    <div class="banner__content">
+      <h2 class="banner__title">
+        {isEs
+          ? 'Conoce lo que sucede en tu empresa, en todo momento y desde cualquier lugar'
+          : 'Know what happens in your business, at any time and from anywhere'
+        }
+      </h2>
+    </div>
+  </div>
+</section>
+
+<style>
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: clamp(6rem, 12vw, 11rem);
+}
+
+.banner__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/banner/fotofondo.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.banner__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(4rem, 8vw, 8rem);
+  padding-block: clamp(5rem, 10vw, 10rem);
+  width: 100%;
+}
+
+.banner__content {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 700;
+  font-style: normal;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.banner__sub {
+  font-size: clamp(var(--text-base), 2vw, var(--text-md));
+  color: rgba(255,255,255,0.7);
+  line-height: var(--leading-loose);
+  max-width: 480px;
+}
+</style>

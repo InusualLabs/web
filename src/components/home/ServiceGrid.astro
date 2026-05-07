@@ -1,0 +1,558 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+const { lang = 'es' } = Astro.props;
+const isEs = lang === 'es';
+
+const services = isEs ? [
+  {
+    title: 'Agricultura',
+    description: 'Sensores y sistemas inteligentes para el control de cultivos, riego automatizado y gestión eficiente de recursos en el campo.',
+    href: '/soluciones/agricultura',
+    tags: ['Riego inteligente', 'Sensores', 'Automatización'],
+    color: '#1a1a2e',
+    image: '/servicegrid/agricultura1.jpg',
+    solutions: [
+      'Monitorización de humedad y temperatura',
+      'Riego automatizado por zonas',
+      'Control de plagas con sensores',
+      'Gestión de flotas agrícolas',
+      'Alertas en tiempo real',
+      'Dashboards de producción',
+    ],
+  },
+  {
+    title: 'Industria',
+    description: 'Monitorización y control de activos industriales en tiempo real. Sistemas IoT para optimizar procesos productivos y reducir tiempos de parada.',
+    href: '/soluciones/industria',
+    tags: ['Control de activos', 'IoT', 'Tiempo real', 'Mantenimiento'],
+    color: '#0a3d2e',
+    image: '/servicegrid/industria1.jpg',
+    solutions: [
+      'Control de maquinaria en remoto',
+      'Mantenimiento predictivo',
+      'Monitorización de consumo energético',
+      'Gestión de almacén',
+      'Trazabilidad de producción',
+      'Integración con SCADA',
+    ],
+  },
+  {
+    title: 'Comercio',
+    description: 'Soluciones tecnológicas para la gestión de inventario, control de accesos y optimización de operaciones en entornos comerciales.',
+    href: '/soluciones/comercio',
+    tags: ['Inventario', 'Control de accesos', 'Gestión'],
+    color: '#2d1b00',
+    image: '/servicegrid/comercio1.jpg',
+    solutions: [
+      'Control de stock en tiempo real',
+      'Gestión de accesos',
+      'Digital signage',
+      'Análisis de afluencia',
+      'Sistemas de pago integrados',
+      'Monitorización de puntos de venta',
+    ],
+  },
+  {
+    title: 'Transporte y Turismo',
+    description: 'Sistemas de seguimiento y gestión de flotas, control de activos en movimiento y soluciones para mejorar la experiencia del viajero.',
+    href: '/soluciones/transporte-turismo',
+    tags: ['Flotas', 'Seguimiento', 'Experiencia'],
+    color: '#0d2137',
+    image: '/servicegrid/transporte1.jpg',
+    solutions: [
+      'Seguimiento GPS de flotas',
+      'Control de tiempos y rutas',
+      'Monitorización de vehículos',
+      'Señalización digital en terminales',
+      'Gestión de equipajes',
+      'Experiencia digital del viajero',
+    ],
+  },
+] : [
+  {
+    title: 'Agriculture',
+    description: 'Smart sensors and systems for crop control, automated irrigation and efficient resource management in the field.',
+    href: '/en/solutions/agriculture',
+    tags: ['Smart irrigation', 'Sensors', 'Automation'],
+    color: '#1a1a2e',
+    image: '/servicegrid/agricultura1.jpg',
+    solutions: [
+      'Humidity and temperature monitoring',
+      'Zone-based automated irrigation',
+      'Pest control with sensors',
+      'Agricultural fleet management',
+      'Real-time alerts',
+      'Production dashboards',
+    ],
+  },
+  {
+    title: 'Industry',
+    description: 'Real-time monitoring and control of industrial assets. IoT systems to optimise production processes and reduce downtime.',
+    href: '/en/solutions/industry',
+    tags: ['Asset control', 'IoT', 'Real-time', 'Maintenance'],
+    color: '#0a3d2e',
+    image: '/servicegrid/industria1.jpg',
+    solutions: [
+      'Remote machinery control',
+      'Predictive maintenance',
+      'Energy consumption monitoring',
+      'Warehouse management',
+      'Production traceability',
+      'SCADA integration',
+    ],
+  },
+  {
+    title: 'Commerce',
+    description: 'Technological solutions for inventory management, access control and operations optimisation in commercial environments.',
+    href: '/en/solutions/commerce',
+    tags: ['Inventory', 'Access control', 'Management'],
+    color: '#2d1b00',
+    image: '/servicegrid/comercio1.jpg',
+    solutions: [
+      'Real-time stock control',
+      'Access management',
+      'Digital signage',
+      'Footfall analysis',
+      'Integrated payment systems',
+      'Point-of-sale monitoring',
+    ],
+  },
+  {
+    title: 'Transport & Tourism',
+    description: 'Fleet tracking and management systems, moving asset control and solutions to improve the traveller experience.',
+    href: '/en/solutions/transport-tourism',
+    tags: ['Fleets', 'Tracking', 'Experience'],
+    color: '#0d2137',
+    image: '/servicegrid/transporte1.jpg',
+    solutions: [
+      'GPS fleet tracking',
+      'Time and route control',
+      'Vehicle monitoring',
+      'Digital signage at terminals',
+      'Luggage management',
+      'Digital traveller experience',
+    ],
+  },
+];
+
+const title = isEs ? 'Soluciones Ad Hoc para tu empresa' : 'AD HOC Solutions for your business';
+const ctaLabel = isEs ? 'Descubrir más →' : 'Discover more →';
+const eyebrowLabel = isEs ? 'Sector' : 'Sector';
+const ctaHref = isEs ? '/contacto' : '/en/contact';
+const ctaText = isEs ? 'Solicitar propuesta' : 'Request proposal';
+---
+
+<section class="service-grid">
+  <div class="container">
+
+    <div class="service-grid__header reveal">
+      <h2 class="service-grid__title">{title}</h2>
+    </div>
+
+    <div class="service-grid__list">
+      {services.map((s, i) => (
+        i % 2 === 0 ? (
+          <div class="service-row reveal">
+            <div
+              class="service-row__image"
+              style={`--c: ${s.color}; background-image: url('${s.image}')`}
+            >
+              <div class="service-row__image-bg"></div>
+              <div class="service-row__tags">
+                {s.tags.map((tag) => (
+                  <span class="service-row__tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div class="service-row__content">
+              <span class="service-row__num">0{i + 1}</span>
+              <h3 class="service-row__title">{s.title}</h3>
+              <p class="service-row__desc">{s.description}</p>
+              <button class="service-row__cta" data-modal={s.title}>
+                {ctaLabel}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div class="service-row reveal">
+            <div class="service-row__content">
+              <span class="service-row__num">0{i + 1}</span>
+              <h3 class="service-row__title">{s.title}</h3>
+              <p class="service-row__desc">{s.description}</p>
+              <button class="service-row__cta" data-modal={s.title}>
+                {ctaLabel}
+              </button>
+            </div>
+            <div
+              class="service-row__image"
+              style={`--c: ${s.color}; background-image: url('${s.image}')`}
+            >
+              <div class="service-row__image-bg"></div>
+              <div class="service-row__tags">
+                {s.tags.map((tag) => (
+                  <span class="service-row__tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Modales -->
+{services.map((s) => (
+  <div class="modal" id={`modal-${s.title}`} data-modal-id={s.title}>
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <div class="modal__image" style={`--c: ${s.color}; background-image: url('${s.image}')`}></div>
+      <div class="modal__body">
+        <button class="modal__close" data-close>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M2 2l16 16M18 2L2 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <span class="modal__eyebrow">{eyebrowLabel}</span>
+        <h2 class="modal__title">{s.title}</h2>
+        <p class="modal__desc">{s.description}</p>
+        <ul class="modal__solutions-list">
+          {s.solutions.map((sol) => (
+            <li class="modal__solution-item">
+              <span class="modal__solution-dot"></span>
+              {sol}
+            </li>
+          ))}
+        </ul>
+        <a href={ctaHref} class="modal__cta">{ctaText}</a>
+      </div>
+    </div>
+  </div>
+))}
+
+<style>
+.service-grid {
+  background: #fff;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.service-grid__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  width: 100%;
+}
+
+.service-grid__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1.1;
+  white-space: nowrap;
+  max-width: none;
+  text-align: center;
+}
+
+.service-grid__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.service-row__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: var(--c);
+  background-size: cover;
+  background-position: center;
+}
+
+.service-row__image-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.service-row__tags {
+  position: absolute;
+  bottom: var(--space-5);
+  left: var(--space-5);
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.service-row__tag {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 0;
+}
+
+.service-row__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-inline: var(--space-4);
+}
+
+.service-row__num {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #029788;
+}
+
+.service-row__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 600;
+  font-style: normal;
+  color: var(--color-text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.service-row__desc {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+}
+
+.service-row__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-text);
+  padding: 0 0 2px 0;
+  width: fit-content;
+  cursor: pointer;
+  transition: color var(--duration-fast), border-color var(--duration-fast);
+  font-family: var(--font-body);
+}
+
+.service-row__cta:hover {
+  color: #029788;
+  border-color: #029788;
+}
+
+/* ── MODAL ── */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  width: 100%;
+  max-width: 1200px;
+  height: 85vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  transform: translateY(24px);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal.is-open .modal__panel {
+  transform: translateY(0);
+}
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+  background-color: var(--c);
+  background-size: cover;
+  background-position: center;
+}
+
+.modal__body {
+  padding: clamp(var(--space-10), 5vw, var(--space-20));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  overflow: hidden;
+  position: relative;
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: var(--color-bg-soft);
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background var(--duration-fast);
+}
+
+.modal__close:hover { background: var(--color-border); }
+
+.modal__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: #029788;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: var(--space-6);
+}
+
+.modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.modal__desc {
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-md));
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+}
+
+.modal__solutions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.modal__solution-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-md));
+  color: var(--color-text-muted);
+}
+
+.modal__solution-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #029788;
+  flex-shrink: 0;
+}
+
+.modal__cta {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #029788, #00D4C8, #029788);
+  background-size: 400% 400%;
+  animation: gradient-shift 20s ease infinite;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-base);
+  padding: var(--space-4) var(--space-8);
+  border-radius: 6px;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: auto;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.modal__cta:hover { background: #017a6e; }
+
+@media (max-width: 768px) {
+  .service-row { grid-template-columns: 1fr; }
+  .modal__panel {
+    grid-template-columns: 1fr;
+    height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__image { height: 250px; }
+}
+</style>
+
+<script>
+  const btns = document.querySelectorAll('[data-modal]');
+  const modals = document.querySelectorAll('.modal');
+
+  function openModal(id: string) {
+    const modal = document.getElementById(`modal-${id}`);
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeAll() {
+    modals.forEach((m) => m.classList.remove('is-open'));
+    document.body.style.overflow = '';
+  }
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = (btn as HTMLElement).dataset.modal;
+      if (id) openModal(id);
+    });
+  });
+
+  modals.forEach((modal) => {
+    const backdrop = modal.querySelector('.modal__backdrop');
+    const closeBtn = modal.querySelector('[data-close]');
+    backdrop?.addEventListener('click', closeAll);
+    closeBtn?.addEventListener('click', closeAll);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+</script>

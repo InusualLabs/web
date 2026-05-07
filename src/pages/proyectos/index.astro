@@ -1,0 +1,423 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import Footer from '../../components/layout/Footer.astro';
+import AnnouncementBar from '../../components/layout/AnnouncementBar.astro';
+
+const colLeft = [
+  {
+    title: 'Equipos de telemedida y monitorización para agricultura',
+    description: 'Desarrollo de equipos IoT para la monitorización remota de parámetros agrícolas. Solución integral que permite el control en tiempo real de cultivos, riego y condiciones ambientales desde cualquier dispositivo.',
+    image: '/proyectos/telemedidaagricultura.jpg',
+  },
+  {
+    title: 'Carros de carga Red.es para las aulas de España',
+    description: 'Diseño y fabricación de carros de carga modulares para tablets y portátiles en aulas de toda España, en colaboración con Red.es. Solución robusta adaptada al entorno educativo.',
+    image: '/proyectos/carrosdecargaaulas.jpg',
+  },
+  {
+    title: 'Smart Digits para la comunicación retail',
+    description: 'Sistema de comunicación digital para entornos retail que permite la gestión dinámica de precios, promociones y contenidos en tiempo real desde una plataforma centralizada.',
+    image: '/proyectos/smartdigits.jpg',
+  },
+  {
+    title: 'Bandera digital para Disashop',
+    description: 'Desarrollo de una bandera digital de gran formato para el punto de venta de Disashop. Solución llamativa y dinámica para atraer la atención del cliente en el exterior del establecimiento.',
+    image: '/proyectos/banderoladigitaldisashop.jpg',
+  },
+  {
+    title: 'Mini dispositivo LED HeyU! para interactividad en el aula',
+    description: 'Dispositivo LED compacto diseñado para fomentar la participación e interactividad en el aula. Permite al profesor conocer el estado de comprensión de cada alumno en tiempo real.',
+    image: '/proyectos/dispositivoheyu.jpg',
+  },
+];
+
+const colRight = [
+  {
+    title: 'Banners para quioscos de la ONCE',
+    description: 'Diseño y producción de banners digitales para los quioscos de la ONCE distribuidos por toda España. Solución adaptada a las necesidades de visibilidad y comunicación de la organización.',
+    image: '/proyectos/bennerskioskos.jpg',
+  },
+  {
+    title: 'Placas para la monitorización remota de máquinas',
+    description: 'Desarrollo de placas electrónicas para la monitorización remota de maquinaria industrial. Permiten el seguimiento en tiempo real del estado de los equipos y la detección temprana de fallos.',
+    image: '/proyectos/placasmonitorizacion.jpg',
+  },
+  {
+    title: 'Tablets Stronger',
+    description: 'Fabricación de tablets robustas para entornos exigentes. Diseñadas para soportar condiciones extremas de uso en sectores industriales, logísticos y de campo.',
+    image: '/proyectos/tabletstronger.jpg',
+  },
+  {
+    title: 'Carros de carga modulares para retail',
+    description: 'Solución de carga modular para dispositivos en entornos retail. Diseño compacto y funcional que permite cargar múltiples dispositivos simultáneamente de forma ordenada y segura.',
+    image: '/proyectos/carrosdecargaretail.jpg',
+  },
+  {
+    title: 'Producción de photoframes para Ale-Hop',
+    description: 'Producción en serie de marcos digitales personalizados para la cadena de tiendas Ale-Hop. Solución de bajo coste con alto impacto visual para el punto de venta.',
+    image: '/proyectos/photoframesalehop.jpg',
+  },
+];
+
+const allProjects = [...colLeft, ...colRight];
+---
+
+<BaseLayout
+  title="Proyectos — iNUSUAL"
+  description="Casos de éxito y proyectos de integración audiovisual y digital signage."
+>
+  <AnnouncementBar
+    text="Nueva guía: Cómo maximizar el impacto visual en retail con LED"
+    ctaLabel="Descargar guía"
+    ctaHref="/recursos"
+  />
+  <Navbar lang="es" currentPath="/proyectos" />
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content reveal">
+          <span class="page-hero__eyebrow">Proyectos</span>
+          <h1 class="page-hero__title">Cada proyecto, una historia</h1>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-section">
+      <div class="container">
+        <div class="projects-masonry">
+
+          <div class="projects-col">
+            {colLeft.map((p, i) => (
+              <button
+                class="proj-card"
+                data-modal={`modal-${i}`}
+              >
+                <img src={p.image} alt={p.title} class="proj-card__img" loading="lazy" />
+                <div class="proj-card__overlay">
+                  <div class="proj-card__overlay-content">
+                    <h3 class="proj-card__title">{p.title}</h3>
+                    <span class="proj-card__cta">Ver más →</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div class="projects-col">
+            {colRight.map((p, i) => (
+              <button
+                class="proj-card"
+                data-modal={`modal-${i + colLeft.length}`}
+              >
+                <img src={p.image} alt={p.title} class="proj-card__img" loading="lazy" />
+                <div class="proj-card__overlay">
+                  <div class="proj-card__overlay-content">
+                    <h3 class="proj-card__title">{p.title}</h3>
+                    <span class="proj-card__cta">Ver más →</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modales -->
+  {allProjects.map((p, i) => (
+    <div class="modal" id={`modal-${i}`}>
+      <div class="modal__backdrop"></div>
+      <div class="modal__panel">
+        <div class="modal__image" style={`background-image: url('${p.image}')`}></div>
+        <div class="modal__body">
+          <button class="modal__close" data-close>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 2l16 16M18 2L2 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <span class="modal__eyebrow">Proyecto</span>
+          <h2 class="modal__title">{p.title}</h2>
+          <p class="modal__desc">{p.description}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <Footer lang="es" />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-bg-soft);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.page-hero__eyebrow {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.page-hero__title {
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-5);
+  font-style: normal;
+}
+
+.page-hero__sub {
+  font-size: clamp(var(--text-base), 2vw, var(--text-md));
+  color: var(--color-text-muted);
+  max-width: 500px;
+  line-height: var(--leading-loose);
+}
+
+.projects-section {
+  background: var(--color-bg);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.projects-masonry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.projects-col {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.proj-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.proj-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.proj-card:hover .proj-card__img {
+  transform: scale(1.04);
+}
+
+.proj-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.proj-card:hover .proj-card__overlay {
+  opacity: 1;
+}
+
+.proj-card__overlay-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transform: translateY(12px);
+  transition: transform var(--duration-normal) var(--ease-out);
+  text-align: left;
+}
+
+.proj-card:hover .proj-card__overlay-content {
+  transform: translateY(0);
+}
+
+.proj-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  font-weight: 600;
+  font-style: normal;
+  color: #fff;
+  line-height: var(--leading-snug);
+}
+
+.proj-card__cta {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  width: fit-content;
+  margin-top: var(--space-2);
+}
+
+/* ── MODAL ── */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  width: 100%;
+  max-width: 1100px;
+  height: 80vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  transform: translateY(24px);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal.is-open .modal__panel {
+  transform: translateY(0);
+}
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal__body {
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: var(--color-bg-soft);
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background var(--duration-fast);
+}
+
+.modal__close:hover { background: var(--color-border); }
+
+.modal__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: #029788;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: var(--space-6);
+}
+
+.modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.modal__desc {
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-md));
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+}
+
+
+@media (max-width: 768px) {
+  .projects-masonry { grid-template-columns: 1fr; }
+  .modal__panel {
+    grid-template-columns: 1fr;
+    height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__image { height: 250px; }
+}
+</style>
+
+<script>
+  const btns = document.querySelectorAll('[data-modal]');
+  const modals = document.querySelectorAll('.modal');
+
+  function openModal(id: string) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeAll() {
+    modals.forEach((m) => m.classList.remove('is-open'));
+    document.body.style.overflow = '';
+  }
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = (btn as HTMLElement).dataset.modal;
+      if (id) openModal(id);
+    });
+  });
+
+  modals.forEach((modal) => {
+    const backdrop = modal.querySelector('.modal__backdrop');
+    const closeBtn = modal.querySelector('[data-close]');
+    backdrop?.addEventListener('click', closeAll);
+    closeBtn?.addEventListener('click', closeAll);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+</script>

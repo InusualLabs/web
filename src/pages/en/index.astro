@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/layout/AnnouncementBar.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Hero from '../../components/home/Hero.astro';
+import LogoSlider from '../../components/home/LogoSlider.astro';
+import ServiceGrid from '../../components/home/ServiceGrid.astro';
+import CaseStudies from '../../components/home/CaseStudies.astro';
+import ServiceList from '../../components/home/ServiceList.astro';
+import Banner from '../../components/home/Banner.astro';
+
+const lang = 'en';
+---
+
+<BaseLayout
+  title="Inusual.labs — Innovative Visual Communication"
+  description="IoT systems, R&D and engineering solutions for asset control and management."
+  lang={lang}
+>
+  <AnnouncementBar />
+
+  <Navbar lang={lang} currentPath="/en" />
+
+  <main>
+    <Hero
+      headline1="Manage what matters, intelligently"
+      subheadline="Technological solutions that keep your assets under control, in real time and from anywhere."
+      ctaPrimary={{ label: 'Request proposal', href: '/en/contact' }}
+      ctaSecondary={{ label: 'View projects', href: '/en/projects' }}
+      clientsLabel="+200 completed projects"
+    />
+
+    <LogoSlider label="Trusted by leading brands" />
+
+    <ServiceGrid lang={lang} />
+
+    <CaseStudies lang={lang} />
+
+    <ServiceList lang={lang} />
+
+    <Banner lang={lang} />
+  </main>
+
+  <Footer lang={lang} />
+</BaseLayout>

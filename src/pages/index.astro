@@ -1,20 +1,48 @@
 ---
-import EnvironmentalImpact from "../components/sections/environment/EnvironmentalImpact.astro";
-import FeaturedProjects from "../components/sections/featured/FeaturedProjects.astro";
-import GetInvolved from "../components/sections/cta/GetInvolved.astro";
-import Hero from "../components/sections/hero/Hero.astro";
-import KeyServices from "../components/sections/services/KeyServices.astro";
-import LatestInnovations from "../components/sections/innovations/LatestInnovations.astro";
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnnouncementBar from '../components/layout/AnnouncementBar.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import Hero from '../components/home/Hero.astro';
+import LogoSlider from '../components/home/LogoSlider.astro';
+import ServiceGrid from '../components/home/ServiceGrid.astro';
+import CaseStudies from '../components/home/CaseStudies.astro';
+import ServiceList from '../components/home/ServiceList.astro';
+import Banner from '../components/home/Banner.astro';
+
+import es from '../i18n/es.json';
+const t = es;
+const lang = 'es';
 ---
 
-<Layout title="Inicio">
-  <main class="flex flex-col gap-y-20 md:gap-y-40 overflow-hidden">
-    <Hero />
-    <KeyServices />
-    <LatestInnovations />
-    <EnvironmentalImpact />
-    <FeaturedProjects />
-    <GetInvolved />
+<BaseLayout
+  title="Inusual.labs — Comunicación Visual Innovadora"
+  description="Soluciones de integración audiovisual y digital signage para retail, hospitality y corporativo."
+  lang={lang}
+>
+  <AnnouncementBar />
+
+  <Navbar lang={lang} currentPath="/" />
+
+  <main>
+    <Hero
+      headline1={t.hero.headline_1}
+      subheadline={t.hero.subheadline}
+      ctaPrimary={{ label: t.hero.cta_primary, href: '/contacto' }}
+      ctaSecondary={{ label: t.hero.cta_secondary, href: '/proyectos' }}
+      clientsLabel={t.hero.clients_label}
+    />
+
+    <LogoSlider label={t.clients.label} />
+
+    <ServiceGrid />
+
+    <CaseStudies />
+
+    <ServiceList />
+
+    <Banner />
   </main>
-</Layout>
+
+  <Footer lang={lang} />
+</BaseLayout>

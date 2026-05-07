@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "solutions": "Solutions",
+    "projects": "Projects",
+    "contact": "Contact",
+    "about": "About iNUSUAL",
+    "cta_primary": "Contact",
+    "cta_secondary": "View projects"
+  },
+  "announcement": {
+    "text": "New guide: How to maximise visual impact in retail with LED",
+    "cta": "Download guide"
+  },
+  "hero": {
+    "headline_1": "Manage what matters, intelligently",
+    "headline_2": "",
+    "headline_3": "",
+    "subheadline": "Technological solutions that keep your assets under control, in real time and from anywhere.",
+    "cta_primary": "Request proposal",
+    "cta_secondary": "View projects",
+    "clients_label": "+200 completed projects"
+  },
+  "clients": {
+    "label": "Trusted by leading brands"
+  },
+  "why": {
+    "title": "Why Inusual.labs?",
+    "items": [
+      {
+        "title": "Custom AD HOC development",
+        "body": "We design and build tailored technological solutions. No off-the-shelf products — everything is built around your needs."
+      },
+      {
+        "title": "Real-time control",
+        "body": "Monitor and manage your assets in real time from any device, anywhere in the world."
+      },
+      {
+        "title": "Remote monitoring & access",
+        "body": "Full remote access to your systems. Detect and resolve incidents before they affect your operations."
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "value": "+200", "label": "Completed projects" },
+      { "value": "+50", "label": "Active clients" },
+      { "value": "4", "label": "Countries" },
+      { "value": "+15", "label": "Years of experience" }
+    ]
+  },
+  "testimonials": {
+    "title": "What our clients say"
+  },
+  "cta_final": {
+    "headline": "Ready to transform your space?",
+    "subheadline": "Tell us about your project and we'll prepare a personalised proposal.",
+    "cta_primary": "Request proposal",
+    "cta_secondary": "View projects"
+  },
+  "footer": {
+    "tagline": "Innovative communication",
+    "solutions": "Solutions",
+    "company": "Company",
+    "resources": "Resources",
+    "legal": "Legal",
+    "copyright": "© 2025 Inusual.labs — Inusual Comunicación Innovadora S.L. All rights reserved.",
+    "address": "A Coruña, Galicia — Spain"
+  }
+}

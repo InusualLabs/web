@@ -1,0 +1,94 @@
+---
+interface StatItem {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  items: StatItem[];
+}
+const { items } = Astro.props;
+---
+
+<section class="stats section--dark section">
+  <div class="container stats__inner">
+    {items.map((item, i) => (
+      <div class:list={['stats__item', 'reveal', `reveal-delay-${i + 1}`]}>
+        <div
+          class="stats__value"
+          data-counter
+          data-target={item.value.replace(/\D/g, '')}
+          data-prefix={item.value.match(/^[^\d]*/)?.[0] || ''}
+          data-suffix={item.value.match(/[^\d]*$/)?.[0] || ''}
+        >
+          {item.value}
+        </div>
+        <p class="stats__label">{item.label}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+.stats {
+  background: var(--color-bg-dark);
+}
+
+.stats__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+}
+
+.stats__item {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.stats__item:last-child {
+  border-right: none;
+}
+
+.stats__value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-style: italic;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.02em;
+}
+
+.stats__label {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.5);
+  line-height: var(--leading-snug);
+}
+
+@media (max-width: 768px) {
+  .stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats__item {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stats__item:nth-child(odd) {
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stats__item:last-child,
+  .stats__item:nth-last-child(2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>

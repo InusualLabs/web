@@ -1,0 +1,116 @@
+---
+interface Props {
+  lang?: 'es' | 'en';
+}
+const { lang = 'es' } = Astro.props;
+const isEs = lang === 'es';
+
+const items = isEs ? [
+  'Desarrollo de soluciones AD HOC',
+  'Fabricación de producto a medida',
+  'Control en tiempo real',
+  'Acceso y monitorización en remoto',
+] : [
+  'AD HOC solution development',
+  'Custom product manufacturing',
+  'Real-time control',
+  'Remote access and monitoring',
+];
+---
+
+<section class="slist">
+
+  <img src={isEs ? '/fichas.svg' : '/fichasingles.svg'} alt="" class="slist__bg" aria-hidden="true" />
+  <div class="slist__inner">
+    <ul class="slist__list">
+      {items.map((item) => (
+        <li class="slist__item">
+          <span class="slist__text">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+</section>
+
+<style>
+.slist {
+  background: #fff;
+  padding-block: clamp(8rem, 20vw, 18rem);
+  overflow: hidden;
+  position: relative;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+}
+
+.slist__bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slist__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.slist__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.slist__item {
+  width: 100%;
+  text-align: center;
+  cursor: default;
+  padding-block: var(--space-1);
+}
+
+.slist__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  font-weight: 600;
+  font-style: normal;
+  color: #d0d0d0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  display: inline-block;
+  user-select: none;
+  white-space: nowrap;
+  transition:
+    color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    font-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slist__item:hover .slist__text {
+  color: #0A0A0A;
+  font-size: clamp(1.9rem, 4.2vw, 3.6rem);
+}
+
+@media (max-width: 900px) {
+  .slist__bg { display: none; }
+  .slist__text {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    white-space: normal;
+  }
+  .slist__item:hover .slist__text {
+    font-size: clamp(1.4rem, 5vw, 2.4rem);
+  }
+}
+</style>

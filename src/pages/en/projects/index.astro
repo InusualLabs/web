@@ -1,0 +1,394 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/layout/Navbar.astro';
+import Footer from '../../../components/layout/Footer.astro';
+import AnnouncementBar from '../../../components/layout/AnnouncementBar.astro';
+
+const colLeft = [
+  {
+    title: 'Telemetry and monitoring equipment for agriculture',
+    description: 'Development of IoT equipment for remote monitoring of agricultural parameters. A comprehensive solution that enables real-time control of crops, irrigation and environmental conditions from any device.',
+    image: '/proyectos/telemedidaagricultura.jpg',
+  },
+  {
+    title: 'Red.es charging trolleys for Spanish classrooms',
+    description: 'Design and manufacture of modular charging trolleys for tablets and laptops in classrooms across Spain, in collaboration with Red.es. A robust solution adapted to the educational environment.',
+    image: '/proyectos/carrosdecargaaulas.jpg',
+  },
+  {
+    title: 'Smart Digits for retail communication',
+    description: 'Digital communication system for retail environments enabling dynamic management of prices, promotions and content in real time from a centralised platform.',
+    image: '/proyectos/smartdigits.jpg',
+  },
+  {
+    title: 'Digital banner for Disashop',
+    description: 'Development of a large-format digital banner for the Disashop point of sale. An eye-catching and dynamic solution to attract customer attention outside the store.',
+    image: '/proyectos/banderoladigitaldisashop.jpg',
+  },
+  {
+    title: 'HeyU! mini LED device for classroom interactivity',
+    description: 'Compact LED device designed to encourage participation and interactivity in the classroom. Allows the teacher to know each student\'s level of understanding in real time.',
+    image: '/proyectos/dispositivoheyu.jpg',
+  },
+];
+
+const colRight = [
+  {
+    title: 'Banners for ONCE kiosks',
+    description: 'Design and production of digital banners for ONCE kiosks distributed throughout Spain. A solution adapted to the visibility and communication needs of the organisation.',
+    image: '/proyectos/bennerskioskos.jpg',
+  },
+  {
+    title: 'Boards for remote machine monitoring',
+    description: 'Development of electronic boards for remote monitoring of industrial machinery. They enable real-time tracking of equipment status and early fault detection.',
+    image: '/proyectos/placasmonitorizacion.jpg',
+  },
+  {
+    title: 'Stronger Tablets',
+    description: 'Manufacture of rugged tablets for demanding environments. Designed to withstand extreme conditions of use in industrial, logistics and field sectors.',
+    image: '/proyectos/tabletstronger.jpg',
+  },
+  {
+    title: 'Modular charging trolleys for retail',
+    description: 'Modular charging solution for devices in retail environments. Compact and functional design that allows multiple devices to be charged simultaneously in an orderly and safe manner.',
+    image: '/proyectos/carrosdecargaretail.jpg',
+  },
+  {
+    title: 'Photoframe production for Ale-Hop',
+    description: 'Mass production of custom digital frames for the Ale-Hop store chain. A low-cost solution with high visual impact at the point of sale.',
+    image: '/proyectos/photoframesalehop.jpg',
+  },
+];
+
+const allProjects = [...colLeft, ...colRight];
+---
+
+<BaseLayout
+  title="Projects — iNUSUAL"
+  description="Success stories and IoT engineering projects."
+  lang="en"
+>
+  <AnnouncementBar />
+  <Navbar lang="en" currentPath="/en/projects" />
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content reveal">
+          <span class="page-hero__eyebrow">Projects</span>
+          <h1 class="page-hero__title">Every space, a story</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-section">
+      <div class="container">
+        <div class="projects-masonry">
+
+          <div class="projects-col">
+            {colLeft.map((p, i) => (
+              <button class="proj-card" data-modal={`modal-${i}`}>
+                <img src={p.image} alt={p.title} class="proj-card__img" loading="lazy" />
+                <div class="proj-card__overlay">
+                  <div class="proj-card__overlay-content">
+                    <h3 class="proj-card__title">{p.title}</h3>
+                    <span class="proj-card__cta">See more →</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div class="projects-col">
+            {colRight.map((p, i) => (
+              <button class="proj-card" data-modal={`modal-${i + colLeft.length}`}>
+                <img src={p.image} alt={p.title} class="proj-card__img" loading="lazy" />
+                <div class="proj-card__overlay">
+                  <div class="proj-card__overlay-content">
+                    <h3 class="proj-card__title">{p.title}</h3>
+                    <span class="proj-card__cta">See more →</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {allProjects.map((p, i) => (
+    <div class="modal" id={`modal-${i}`}>
+      <div class="modal__backdrop"></div>
+      <div class="modal__panel">
+        <div class="modal__image" style={`background-image: url('${p.image}')`}></div>
+        <div class="modal__body">
+          <button class="modal__close" data-close>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M2 2l16 16M18 2L2 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <span class="modal__eyebrow">Project</span>
+          <h2 class="modal__title">{p.title}</h2>
+          <p class="modal__desc">{p.description}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <Footer lang="en" />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: var(--color-bg-soft);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.page-hero__eyebrow {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.page-hero__title {
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-5);
+  font-style: normal;
+}
+
+.projects-section {
+  background: var(--color-bg);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.projects-masonry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.projects-col {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.proj-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.proj-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.proj-card:hover .proj-card__img { transform: scale(1.04); }
+
+.proj-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.proj-card:hover .proj-card__overlay { opacity: 1; }
+
+.proj-card__overlay-content {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transform: translateY(12px);
+  transition: transform var(--duration-normal) var(--ease-out);
+  text-align: left;
+}
+
+.proj-card:hover .proj-card__overlay-content { transform: translateY(0); }
+
+.proj-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  font-weight: 600;
+  font-style: normal;
+  color: #fff;
+  line-height: var(--leading-snug);
+}
+
+.proj-card__cta {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 2px;
+  width: fit-content;
+  margin-top: var(--space-2);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  width: 100%;
+  max-width: 1100px;
+  height: 80vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  transform: translateY(24px);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal.is-open .modal__panel { transform: translateY(0); }
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal__body {
+  padding: clamp(var(--space-8), 4vw, var(--space-12));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: var(--color-bg-soft);
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background var(--duration-fast);
+}
+
+.modal__close:hover { background: var(--color-border); }
+
+.modal__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: #029788;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: var(--space-6);
+}
+
+.modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.modal__desc {
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-md));
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+}
+
+@media (max-width: 768px) {
+  .projects-masonry { grid-template-columns: 1fr; }
+  .modal__panel {
+    grid-template-columns: 1fr;
+    height: 95vh;
+    overflow-y: auto;
+  }
+  .modal__image { height: 250px; }
+}
+</style>
+
+<script>
+  const btns = document.querySelectorAll('[data-modal]');
+  const modals = document.querySelectorAll('.modal');
+
+  function openModal(id: string) {
+    const modal = document.getElementById(id);
+    if (modal) {
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeAll() {
+    modals.forEach((m) => m.classList.remove('is-open'));
+    document.body.style.overflow = '';
+  }
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = (btn as HTMLElement).dataset.modal;
+      if (id) openModal(id);
+    });
+  });
+
+  modals.forEach((modal) => {
+    const backdrop = modal.querySelector('.modal__backdrop');
+    const closeBtn = modal.querySelector('[data-close]');
+    backdrop?.addEventListener('click', closeAll);
+    closeBtn?.addEventListener('click', closeAll);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+</script>

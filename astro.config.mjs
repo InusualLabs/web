@@ -1,11 +1,15 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
-  site: "https://inusual-labs.com",
+  site: 'https://inusual-labs.com',
   base: '/',
-  output: "static",
-  trailingSlash: "ignore",
+  output: 'static',
+  trailingSlash: 'ignore',
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });
